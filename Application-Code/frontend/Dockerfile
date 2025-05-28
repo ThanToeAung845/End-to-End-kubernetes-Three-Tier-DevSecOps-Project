@@ -1,6 +1,8 @@
 FROM node:18
+
 WORKDIR /usr/src/app
-COPY package*.json ./
-RUN npm install
 COPY . .
-CMD [ "npm", "start" ]
+
+RUN npm install
+ENV NODE_OPTIONS=--openssl-legacy-provider
+CMD ["npm", "start"]
